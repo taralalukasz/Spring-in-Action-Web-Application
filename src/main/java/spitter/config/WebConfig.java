@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 
 /**
- * konfiguracja dispatcher servletu
+ *  dispatcher servlet configuration
  */
 @Configuration
 @EnableWebMvc
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     /**
-     * Resolver widoków ktory bedzie uzywany przez dispatcher
+     * View Resolver used by the dispatcher
      * @return
      */
     @Bean
@@ -33,7 +33,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 
     /**
-     * dzieki temu wszystkie requesty sa obslugiwane przez glowny dispatcher
+     * thx to this all requests are progressed by the dispatcher
      * @param configurer
      */
     @Override

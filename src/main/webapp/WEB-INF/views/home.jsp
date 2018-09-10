@@ -5,7 +5,7 @@
     <title>Spittr</title>
 </head>
     <body>
-    <h1>Witamy w serwisie Spittr</h1>
+    <h1>Welcome in service Spittr</h1>
     
     </body>
 </html>

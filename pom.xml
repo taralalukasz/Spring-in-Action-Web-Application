@@ -64,7 +64,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>test-web</finalName>
+        <finalName>MVCTraining</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

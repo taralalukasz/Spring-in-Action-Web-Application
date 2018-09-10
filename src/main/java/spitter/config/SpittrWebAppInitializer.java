@@ -3,8 +3,8 @@ package spitter.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
- * do konfiguracji serwletu dystrybutora i kontekstu aplikacji Springa
- * w kontekście serwletu wystarczy dowolna klasa rozszerzająca AbstractAnnotationConfigDispatcherServletInitializer.
+ * You need just to extend your class with AbstractAnnotationConfigDispatcherServletInitializer and
+ * configuration  of dispatcher servlet and Spring app context is done
  */
 public class SpittrWebAppInitializer  extends AbstractAnnotationConfigDispatcherServletInitializer {
 
