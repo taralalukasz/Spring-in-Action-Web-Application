@@ -62,6 +62,13 @@
             <version>5.0.7.RELEASE</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>MVCTraining</finalName>
