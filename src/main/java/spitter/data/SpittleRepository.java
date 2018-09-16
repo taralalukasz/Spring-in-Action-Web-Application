@@ -19,4 +19,20 @@ public class SpittleRepository implements ISpittleRepository {
         }
         return spittleList;
     }
+
+    @Override
+    public Spittle findOne(long spittleId) {
+
+        if (spittleId <= 0)
+            return null;
+
+        List<Spittle> spittleList = new ArrayList<>();
+
+        for (long i = 0 ; i < 100; i++) {
+            spittleList.add(new Spittle(i, "spittleNumber" + i, new Date()));
+        }
+
+        return spittleList.stream().filter(spittle->spittle.getId() == spittleId).findFirst().orElse(null);
+
+    }
 }

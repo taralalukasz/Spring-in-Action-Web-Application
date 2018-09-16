@@ -3,6 +3,7 @@ package spitter.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping(path="/spittles")
 public class SpittleController {
 
     private static final String MAX_LONG_AS_STRING = "9223372036854775807";
@@ -59,10 +59,33 @@ public class SpittleController {
      *
      * @return
      */
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(method=RequestMethod.GET, path="/spittles")
     public List<Spittle> spittles(
             @RequestParam(defaultValue = MAX_LONG_AS_STRING, name="max") long max,
             @RequestParam(defaultValue = "20", name="count") int count) {
         return repository.findSpittles(max, count);
     }
+
+
+    /**
+     * if Path variable name is the same as method parameter name, it is not necessary to write the name in annotation.
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/spittles/show/{spittleId}")
+    public String showSpittle(
+            @PathVariable long spittleId,
+            Model model) {
+        model.addAttribute("spittle", repository.findOne(spittleId) );
+        return "spittle";
+    }
+
+    /**
+     * You can also pass the name of path variable in annotation parameter
+     */
+//    @RequestMapping(method = RequestMethod.GET, path = "/spittles/show/{spittleId}")
+//    public String showSpittle(
+//            @PathVariable("spittleId") long spittleId,
+//            Model model) {
+//        model.addAttribute("spittle", repository.findOne(spittleId) );
+//        return "spittle";
+//    }
 }
