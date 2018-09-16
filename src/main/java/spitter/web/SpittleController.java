@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import spitter.data.ISpittleRepository;
 import spitter.data.model.Spittle;
 
@@ -14,6 +15,8 @@ import java.util.Map;
 @Controller
 @RequestMapping(path="/spittles")
 public class SpittleController {
+
+    private static final String MAX_LONG_AS_STRING = "9223372036854775807";
 
     private ISpittleRepository repository;
 
@@ -57,7 +60,9 @@ public class SpittleController {
      * @return
      */
     @RequestMapping(method=RequestMethod.GET)
-    public List<Spittle> spittles() {
-        return repository.findSpittles(Long.MAX_VALUE, 20);
+    public List<Spittle> spittles(
+            @RequestParam(defaultValue = MAX_LONG_AS_STRING, name="max") long max,
+            @RequestParam(defaultValue = "20", name="count") int count) {
+        return repository.findSpittles(max, count);
     }
 }
