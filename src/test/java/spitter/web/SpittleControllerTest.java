@@ -39,9 +39,37 @@ public class SpittleControllerTest  {
                 .andExpect(view().name("spittles"))
                 .andExpect(model().attributeExists("spittleList"))
                 .andExpect(model().attribute("spittleList", hasItems(expectedSpittles.toArray())));
-
-
     }
+
+    @Test
+    public void testShowSpittle() throws Exception {
+        ISpittleRepository repositoryMock = Mockito.mock(ISpittleRepository.class);
+        Spittle testSpittle = new Spittle(5l, "message of spittle 5", new Date());
+        when(repositoryMock.findOne(5l)).thenReturn(testSpittle);
+
+        SpittleController testSubject = new SpittleController(repositoryMock);
+        MockMvc mockMvc = standaloneSetup(testSubject)
+                .setSingleView(new InternalResourceView("/WEB-INF/views/spittles.jsp"))
+                .build();
+        mockMvc.perform(get("/spittles/show/5"))
+                .andExpect(view().name("spittle"))
+                .andExpect(model().attribute("spittle", testSpittle));
+    }
+
+    @Test
+    public void testShowSpittleNotFound() throws Exception {
+        ISpittleRepository repositoryMock = Mockito.mock(ISpittleRepository.class);
+
+        when(repositoryMock.findOne(5l)).thenReturn(null);
+
+        SpittleController testSubject = new SpittleController(repositoryMock);
+        MockMvc mockMvc = standaloneSetup(testSubject)
+                .setSingleView(new InternalResourceView("/WEB-INF/views/spittles.jsp"))
+                .build();
+        mockMvc.perform(get("/spittles/show/5"))
+                .andExpect(view().name("spittle"));
+    }
+
 
     private List<Spittle> createSpittleList(int count) {
         List<Spittle> spittles = new ArrayList<Spittle>();
