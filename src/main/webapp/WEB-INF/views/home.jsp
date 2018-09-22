@@ -10,5 +10,8 @@
 
         <h1>You can see first spittle here by using resource-based path variable</h1>
         <a href="<c:url value="/spittles/show/1" />">Link to 1st spittle</a>
+
+        <h1>Register new user</h1>
+        <a href="<c:url value="/spitter/register"/>">Register new spitter</a>
     </body>
 </html>
