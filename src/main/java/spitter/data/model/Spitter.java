@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Spitter {
+//    input field NAME must be the same as name of the field in java model
     private String name;
     private String surname;
     private String username;

@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/style.css" />" >
     </head>
     <body>
+        <%--input field NAME must be the same as name of the field in java model--%>
         <form name="registerForm" method="POST">
             Name<input type="text" name="name"/><br>
             Surame<input type="text" name="surname"/><br>

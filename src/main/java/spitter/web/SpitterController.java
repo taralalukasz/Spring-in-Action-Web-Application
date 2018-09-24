@@ -29,6 +29,9 @@ public class SpitterController {
     @RequestMapping(path="/register", method = RequestMethod.POST)
     public String processRegistration(Spitter spitter) {
         spitterRepository.save(spitter);
+        /*
+        word redirect:/url suggests, that View resolver won't create such a view, but request should be redirected.
+         */
         return "redirect:/spitter/" + spitter.getUsername();
     }
 

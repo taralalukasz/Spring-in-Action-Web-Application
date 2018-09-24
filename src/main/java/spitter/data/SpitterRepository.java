@@ -12,6 +12,6 @@ public class SpitterRepository implements ISpitterRepository {
 
     @Override
     public Spitter findUserByUsername(String username) {
-        return new Spitter("test", "user", "username", "pasword");
+        return new Spitter("test", "user", username, "password");
     }
 }
