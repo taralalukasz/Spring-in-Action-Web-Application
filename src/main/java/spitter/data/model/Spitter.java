@@ -3,11 +3,22 @@ package spitter.data.model;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Spitter {
 //    input field NAME must be the same as name of the field in java model
+    @NotNull
+    @Size(min=3, max=25)
     private String name;
+    @NotNull
+    @Size(min=3, max=25)
     private String surname;
+    @NotNull
+    @Size(min=3, max=25)
     private String username;
+    @NotNull
+    @Size(min=3, max=25)
     private String password;
 
     public String getName() {
