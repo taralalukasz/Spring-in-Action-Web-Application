@@ -41,6 +41,24 @@ public class SpittleControllerTest  {
                 .andExpect(model().attribute("spittleList", hasItems(expectedSpittles.toArray())));
     }
 
+
+    @Test
+    public void testSpittleControllerRequestParams() throws Exception {
+        List<Spittle> expectedSpittles = createSpittleList(10);
+
+        ISpittleRepository repositoryMock = Mockito.mock(ISpittleRepository.class);
+        when(repositoryMock.findSpittles(1234, 10)).thenReturn(expectedSpittles);
+
+        SpittleController testSubject = new SpittleController(repositoryMock);
+        MockMvc mockMvc = standaloneSetup(testSubject)
+                .setSingleView(new InternalResourceView("/WEB-INF/views/spittles.jsp"))
+                .build();
+        mockMvc.perform(get("/spittles?max=1234&count=10"))
+                .andExpect(view().name("spittles"))
+                .andExpect(model().attributeExists("spittleList"))
+                .andExpect(model().attribute("spittleList", hasItems(expectedSpittles.toArray())));
+    }
+
     @Test
     public void testShowSpittle() throws Exception {
         ISpittleRepository repositoryMock = Mockito.mock(ISpittleRepository.class);
