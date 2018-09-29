@@ -25,7 +25,9 @@ public class SpitterController {
     private ISpitterRepository spitterRepository;
 
     @RequestMapping(path="/register", method = RequestMethod.GET)
-    public String showRegistrationForm() {
+    public String showRegistrationForm(Model model) {
+//        we have to pass this model in order to attach it to the form created by Spring Forms library on registerForm.jsp
+        model.addAttribute("spitter", new Spitter("testName", "testSurname", "testUname"));
         return "registerForm";
     }
 

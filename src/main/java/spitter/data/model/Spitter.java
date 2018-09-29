@@ -21,6 +21,18 @@ public class Spitter {
     @Size(min=3, max=25)
     private String password;
 
+    @NotNull
+    @Size(min = 3, max = 25)
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getName() {
         return name;
     }
@@ -58,6 +70,15 @@ public class Spitter {
         this.surname = surname;
         this.username = username;
         this.password = password;
+    }
+
+    public Spitter() {
+    }
+
+    public Spitter(@NotNull @Size(min = 3, max = 25) String name, @NotNull @Size(min = 3, max = 25) String surname, @NotNull @Size(min = 3, max = 25) String username) {
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
     }
 
     @Override
