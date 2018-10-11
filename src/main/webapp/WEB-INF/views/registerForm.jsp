@@ -6,34 +6,35 @@
         <title>Spittr</title>
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/style.css" />" >
     </head>
+
+    <style>
+        div.error {
+            color:red;
+            border-style : solid;
+        }
+
+        label.error {
+            text-decoration : underline;
+            color: cadetblue;
+        }
+    </style>
     <body>
-        <%--input field NAME must be the same as name of the field in java model--%>
-        <%--<form name="registerForm" method="POST">--%>
-            <%--Name<input type="text" name="name"/><br>--%>
-            <%--Surame<input type="text" name="surname"/><br>--%>
-            <%--Username<input type="text" name="username"/><br>--%>
-            <%--Password<input type="text" name="password"/><br>--%>
-
-            <%--<input type="submit" value="Submit Registration"/>--%>
-        <%--</form>--%>
-
         <%-- modelAttribute is used here instead of commandName, which is invalid since Spring 5.x.x version --%>
         <%--modelAttribute is a name of a MODEL, which is provided by a conroller, which sends us to this page--%>
         <sf:form name="registerForm" method="POST" modelAttribute="spitter" >
-            Name <sf:input path="name" /><br>
-            Surnamame <sf:input path="surname" /><br>
-            E-mail address <sf:input path="email" type="email"/><br>
-            Username <sf:input path="username" /><br>
-            Password <sf:password path="password" /><br>
+            <sf:label path="name" cssErrorClass="error">Name</sf:label> <sf:input path="name" />  <br>
+            <sf:label path="surname" cssErrorClass="error">Surnamame</sf:label> <sf:input path="surname" /> <br>
+            <sf:label path="email" cssErrorClass="error">E-mail address</sf:label> <sf:input path="email" type="email"/><br>
+            <sf:label path="username" cssErrorClass="error">Username </sf:label><sf:input path="username" /><br>
+            <sf:label path="password" cssErrorClass="error">Password</sf:label> <sf:password path="password" /><br>
 
             <input type="submit" value="Submit registration"/>
+
+            <%--Error messages are set by constraint annotation on the model Spitter--%>
+            <sf:errors path="*" element="div" cssClass="error"/>
         </sf:form>
 
         <br>
-
-        Spitter name: <c:out value="${spitter.name}" /><br>
-        Spitter username:  <c:out value="${spitter.username}" />
-
 
     </body>
 
