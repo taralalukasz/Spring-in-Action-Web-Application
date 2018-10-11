@@ -10,20 +10,19 @@ import javax.validation.constraints.Size;
 public class Spitter {
 //    input field NAME must be the same as name of the field in java model
     @NotNull
-    @Size(min=3, max=25)
+    @Size(min=3, max=25, message = "{name.size}")
     private String name;
     @NotNull
-    @Size(min=3, max=25)
+    @Size(min=3, max=25, message = "{surname.size}")
     private String surname;
     @NotNull
-    @Size(min=3, max=25)
+    @Size(min=3, max=25, message = "{username.size}")
     private String username;
     @NotNull
-    @Size(min=3, max=25)
+    @Size(min=3, max=25, message = "{password.size}")
     private String password;
-
     @NotNull
-    @Size(min = 3, max = 25)
+    @Size(min = 3, max = 25, message = "{email.valid}")
     private String email;
 
     public String getEmail() {
